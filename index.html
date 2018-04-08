@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" class="ui container">
+        <simpletest :titles="[{'name' : 'the first title'}, {'name' : 'the second title'}]"></simpletest>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    Vue.component('simpletest', {
+        props: ['titles'],
+        data: function () {
+            return {
+                words: 'some words',
+                newTitles: this.titles,
+                newTitle: ''
+            }
+        },
+        template: `
+        <p class='ui message info'>
+        <input v-model='newTitle' placeholder='add a new title' name="title"/>
+            <button class='ui primary button' @click='addTitle'>Add title</button>
+            <ul id="example-1">
+                <li v-for="title in newTitles">
+                    {{ title.name }}
+                </li>
+            </ul>
+        </p>`,
+        methods: {
+            addTitle: function () {
+                this.newTitles.push({ 'name': this.newTitle })
+            }
+        }
+
+    });
+    var app = new Vue({
+        el: '#app'
+    });
+
+</script>
