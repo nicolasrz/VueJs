@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Titre de la page</title>
+    <title>VueJs</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
 </head>
 
 <body>
     <div id="app" class="ui container">
+        <!-- Passing array as props -->
         <simpletest :titles="[{'name' : 'the first title'}, {'name' : 'the second title'}]"></simpletest>
     </div>
 </body>
@@ -44,7 +45,7 @@
         }
 
     });
-    var app = new Vue({
+    const app = new Vue({
         el: '#app'
     });
 
